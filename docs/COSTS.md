@@ -1,0 +1,13 @@
+# Cost statement
+
+The implementation has no software purchase requirement. FastAPI, SQLite, APScheduler, BeautifulSoup, httpx, feedparser, pypdf, openpyxl, ReportLab and the dashboard use free/open-source libraries. Local operation uses the existing computer and its network/electricity. Docker is optional.
+
+Gemini is configured for a user-supplied free-tier project. The default is gemini-3.5-flash-lite, verified against Google's model and pricing documentation on 2026-11-13. Model quotas, regional eligibility and availability are controlled by Google and can change. The application does not enable billing. A key attached to a billed project can still incur provider charges; the operator must use an eligible free-tier-only project. Do not assume arbitrary usage is free. Provider references: [model](https://aistudio.google.com/docs/models/gemini-3.5-flash-lite), [pricing](https://aistudio.google.com/docs/pricing#gemini-3.5-flash-lite) and [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits).
+
+Ollama is an optional local model path without per-request API fees; hardware capacity and electricity still apply. Groq is optional with its own account/model free-tier limits. These alternatives require explicit configuration; no automatic fallback sends internal documents elsewhere.
+
+Free search has no paid key and no availability guarantee. Public HTML search may be blocked or throttled. The app logs the limitation and supports manually supplied sources. It does not buy proxies, bypass CAPTCHAs or use paid scrape services.
+
+Usage controls: seven-day LLM response cache; three attempts per call; research limited to four pages; discovery limited to six queries and at most 48 candidate results; analysis limited to 100 eligible documents per run; crawl limited by company settings (default 40 sources), 20 feed records per source, three MB per response and at least one second per host. Re-run analysis to process remaining records. Repeated context edits trigger additional analysis work and may exhaust free quotas.
+
+No exact monthly dollar amount can be promised without the user's provider configuration and workload. No paid API, hosting account, subscription or purchase was created for this project. Hosting with durable storage and an always-running scheduler may not be available on a suitable free tier; local operation remains the no-hosting-bill option.

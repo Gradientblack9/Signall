@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Signal Stack</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/static/style.css?v=3"><script src="/static/app.js?v=3" defer></script></head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#overview">Signal Stack</a>
+    <div class="workspace-label">Company</div>
+    <button class="workspace" id="workspace-switch"><b id="workspace-name">Select company</b></button>
+    <select id="company-select" aria-label="Choose company" hidden></select>
+    <nav aria-label="Main navigation">
+      <a href="#overview" data-page="overview">Overview</a>
+      <a href="#company" data-page="company">Company profile</a>
+      <a href="#interview" data-page="interview">Strategy interview</a>
+      <a href="#stack" data-page="stack">Signal stack</a>
+      <a href="#feed" data-page="feed">Intelligence feed</a>
+      <a href="#brief" data-page="brief">Monday brief</a>
+      <a href="#actions" data-page="actions">Action tracker</a>
+      <a href="#automation" data-page="automation">Automation & settings</a>
+    </nav>
+    <div class="sidebar-bottom"><button id="token-button" class="button secondary" aria-label="Set access token">Access token</button></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar"><button id="menu-button" class="button secondary mobile-menu" aria-label="Toggle navigation">Menu</button><div class="breadcrumb" id="page-label">Overview</div><div class="topbar-right"><span class="connection" id="connection">Checking system</span><button id="new-company" class="button small secondary">Add company</button></div></header>
+    <main id="content" tabindex="-1"><div class="loading">Opening your workspace…</div></main>
+  </div>
+  <div id="toasts" role="status" aria-live="polite"></div>
+  <dialog id="modal"><div id="modal-content"></div><button class="modal-close icon-button" id="close-modal" aria-label="Close dialog">×</button></dialog>
+</body></html>
