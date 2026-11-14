@@ -94,6 +94,8 @@ def test_all_assignment_feed_filters_and_chronological_order():
     assert [s['id'] for s in filter_signals(rows,min_relevance=.8,min_impact=.7)] == [1]
     assert [s['id'] for s in filter_signals(rows,verification='verified')] == [2]
     assert len(filter_signals(rows,verification='quote_matched')) == 2
+    rows[1]['interpretation']['event_date'] = 'Nov 14'
+    assert [s['id'] for s in filter_signals(rows,date_from='2026-11-12')] == [2]
     assert not filter_signals([sample_signal(3,'2026-11-14',.8,.8,False,'Patagonia')],competitor='On')
     with pytest.raises(ValueError): filter_signals(rows,date_from='yesterday')
     with pytest.raises(ValueError): filter_signals(rows,date_from='2026-12-01',date_to='2026-11-01')
@@ -204,6 +206,14 @@ def test_historical_articles_are_not_presented_as_this_week_news(tmp_path):
     assert result['developments']==0
     sections=json.loads(db.one('SELECT sections FROM briefs')['sections'])
     assert sections[9]['items'][0]['freshness']=='Historical or outside the current week'
+
+
+def test_explicit_written_dates_do_not_make_old_articles_current():
+    from app.dates import explicit_date
+    assert explicit_date('14 Oct 2026').date().isoformat() == '2026-10-14'
+    assert explicit_date('October 14, 2026').date().isoformat() == '2026-10-14'
+    assert explicit_date('Nov 12') is None
+    assert explicit_date('2026-11-14T05:00:00Z').year == 2026
 
 
 def test_opportunities_can_address_risks_without_inventing_events(tmp_path):

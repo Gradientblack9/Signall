@@ -3,6 +3,7 @@ import json
 from datetime import datetime, timedelta, timezone
 
 from .db import now
+from .dates import explicit_date
 
 SECTIONS = ['Executive Summary', 'Customer Signals', 'Competitor Intelligence', 'Market Intelligence',
             'Internal Business Intelligence', 'Opportunities Identified', 'Risks & Threats',
@@ -16,11 +17,8 @@ def compose(db, company, signals, opportunity_ideas=()):
         raw = signal['evidence'].get('published_at') or signal['interpretation'].get('event_date')
         if not raw:
             return 'Date unknown; not established as a new event this week'
-        try:
-            stamp = datetime.fromisoformat(raw.replace('Z', '+00:00'))
-            if stamp.tzinfo is None:
-                stamp = stamp.replace(tzinfo=timezone.utc)
-        except ValueError:
+        stamp = explicit_date(raw)
+        if stamp is None:
             return 'Date unknown; not established as a new event this week'
         return 'Dated within the last seven days' if cutoff <= stamp <= datetime.now(timezone.utc)+timedelta(days=1) else 'Historical or outside the current week'
     # Background company descriptions are traceable context, not new developments.
@@ -45,7 +43,8 @@ def compose(db, company, signals, opportunity_ideas=()):
 
     sections[0]['items'] = [item(s) for s in developments[:5]]
     answered = db.one("SELECT COUNT(*) n FROM profile_answers WHERE company_id=? AND answer!='' AND skipped=0", (company['id'],))['n']
-    sections[0]['note'] = (f'{len(developments)} supported developments in the last seven days; '
+    sections[0]['note'] = (f'{len(developments)} source-supported developments from the current collection window; '
+        'items with unknown event dates are explicitly marked and are not confirmed as new this week. '
         f'{len(ranked) - len(developments)} background/historical records excluded from development headlines. '
         f'{max(0, 10-answered)} interview questions remain unanswered or skipped. '
         'Interpretations and suggested roles are AI assessments, not independently verified facts.')

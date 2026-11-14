@@ -59,12 +59,27 @@ docker compose up --build -d
 
 Docker persists SQLite under `./data` and publishes only on localhost. For remote deployment, use a persistent disk, HTTPS reverse proxy, `SIGNAL_ACCESS_TOKEN`, and **one** Uvicorn worker/replica. The scheduler is in-process; free hosting that sleeps cannot guarantee Monday delivery. No remote deployment or GitHub push has been performed without an account/target. Docker configuration is provided; image execution requires Docker on the host.
 
+## Deliverables & Documentation Links
+
+- **Repository**: [https://github.com/Gradientblack9/Signall](https://github.com/Gradientblack9/Signall)
+- **Technical Documentation (5-Page PDF)**: [`docs/Signal_Stack_Technical_Guide.pdf`](docs/Signal_Stack_Technical_Guide.pdf) and [`docs/TECHNICAL.md`](docs/TECHNICAL.md)
+- **Database Schema**: [`schema.sql`](schema.sql)
+- **Three Sample Company Reports**:
+  - MeetUniversity (Primary / EdTech): [`docs/sample_reports/MeetUniversity_Monday_Morning_Brief.md`](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.html))
+  - Buffer (SaaS / Social Media): [`docs/sample_reports/Buffer_Monday_Morning_Brief.md`](docs/sample_reports/Buffer_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/Buffer_Monday_Morning_Brief.html))
+  - Allbirds (Direct-to-Consumer / Footwear): [`docs/sample_reports/Allbirds_Monday_Morning_Brief.md`](docs/sample_reports/Allbirds_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/Allbirds_Monday_Morning_Brief.html))
+- **Cost Statement**: [`docs/COSTS.md`](docs/COSTS.md) (100% free / open-source tier disclosure)
+- **Screen-Recorded Demo Guide**: [`docs/DEMO.md`](docs/DEMO.md)
+- **Test Evidence & Acceptance**: [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) and [`docs/PHASES.md`](docs/PHASES.md)
+
 ## Reading order
 
+- `docs/Signal_Stack_Technical_Guide.pdf`: 5-page submission PDF covering architecture, source discovery, crawling, ranking, AI analysis, scheduling and reliability.
 - `docs/PHASES.md`: implementation and acceptance status for stages 0–11.
 - `docs/TECHNICAL.md`: architecture, model, grounding, reliability and operations.
 - `docs/COSTS.md`: no-cost dependencies, quotas and resource limits.
 - `docs/ACCEPTANCE.md`: live acceptance instructions and honest release gates.
 - `docs/DEMO.md`: demo walkthrough and recording guidance.
+
 
 The PRD does not name its ten brief sections or score weights. The chosen defaults are explicit in `app/services.py` and the technical guide. The requirement for at least three opportunities is an evidence threshold: if fewer exist, the brief states the shortfall.

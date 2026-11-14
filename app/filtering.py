@@ -1,6 +1,7 @@
 from datetime import date
 import re
 from urllib.parse import urlsplit
+from .dates import explicit_date
 
 
 def filter_signals(rows, *, category='', sentiment='', urgency='', q='', min_score=0,
@@ -14,7 +15,12 @@ def filter_signals(rows, *, category='', sentiment='', urgency='', q='', min_sco
     matched = []
     for row in rows:
         evidence, interpretation = row['evidence'], row['interpretation']
-        day = (interpretation.get('event_date') or evidence.get('published_at') or evidence['discovered_at'])[:10]
+        day = ''
+        for value in (interpretation.get('event_date'), evidence.get('published_at'), evidence['discovered_at']):
+            stamp = explicit_date(value)
+            if stamp:
+                day = stamp.date().isoformat()
+                break
         if category and row['category'] != category:
             continue
         if sentiment and interpretation['sentiment'] != sentiment or urgency and interpretation['urgency'] != urgency:

@@ -229,6 +229,18 @@ class Engine:
                     competitors.append(competitor.model_dump() | {'status': 'candidate; requires review'})
             except ValueError:
                 pass
+        # A scored, retrieved official competitor source is also a profile
+        # candidate even if the model omitted it from its separate list.
+        for source in scored.sources:
+            if source.category != 'Competitors':
+                continue
+            try:
+                url = canonical_url(source.url)
+                if url in accepted:
+                    competitors.append({'name': source.name, 'url': url,
+                        'reason': source.reason, 'status': 'candidate; requires review'})
+            except ValueError:
+                continue
         company = context['company']
         previous_competitor_urls = {s['url'] for s in self.db.all("SELECT url FROM sources WHERE company_id=? AND category='Competitors'", (company_id,))}
         observed = {c['url']: c for c in competitors}

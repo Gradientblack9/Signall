@@ -16,7 +16,7 @@ def main():
     target=Path('output/Signal_Stack_Technical_Guide.pdf');target.parent.mkdir(parents=True,exist_ok=True)
     source=Path('docs/TECHNICAL.md').read_text(encoding='utf-8')
     sections=re.split(r'^## ',source,flags=re.M)[1:]
-    body=ParagraphStyle('Body',fontName='Helvetica',fontSize=10,leading=14.3,textColor=colors.HexColor('#384c42'),spaceAfter=10)
+    body=ParagraphStyle('Body',fontName='Helvetica',fontSize=9.3,leading=12.3,textColor=colors.HexColor('#222222'),spaceAfter=7)
     title=ParagraphStyle('Title',fontName='Times-Roman',fontSize=25,leading=29,textColor=colors.HexColor('#214736'),spaceAfter=17)
     eyebrow=ParagraphStyle('Eyebrow',fontName='Helvetica-Bold',fontSize=8,leading=12,textColor=colors.HexColor('#819360'),spaceAfter=15)
     story=[]

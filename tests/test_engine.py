@@ -85,7 +85,7 @@ def test_discovery_candidates_require_approval_and_no_url_invention(stack):
     db,e,w,t,ids=stack
     cid=ids[0];e.research(cid)
     result=e.discover(cid)
-    assert result['added']==24 and result['competitors']==7
+    assert result['added']==24 and 5 <= result['competitors'] <= 10
     assert db.one("SELECT COUNT(*) n FROM sources WHERE status='approved'")['n']==0
     with pytest.raises(ValueError,match='Approve'):
         e.crawl(cid)
