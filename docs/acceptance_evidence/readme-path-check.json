@@ -120,7 +120,12 @@
       "path": "docs/PHASES.md",
       "exists": true,
       "tracked": true
+    },
+    {
+      "path": "docs/VIDEO_SCRIPT.md",
+      "exists": true,
+      "tracked": true
     }
   ],
-  "note": "Repository-relative README links resolve to tracked files/directories. Generated output paths are explicitly labeled local and ignored."
+  "note": "Repository-relative README links resolve to tracked files. Generated output paths are explicitly labeled local and ignored."
 }
