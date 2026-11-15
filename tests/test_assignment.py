@@ -197,6 +197,20 @@ def test_competitor_country_aliases_do_not_inflate_minimum_target():
     assert len(unique_competitors(competitors))==3
 
 
+def test_selected_customer_thread_does_not_collect_sitewide_rss(tmp_path):
+    class Website:
+        def get(self, url, delay=1):
+            assert url == 'https://education.example/forum/study-abroad'
+            return Page(url, '<html><head><title>Student discussion</title><link type="application/rss+xml" href="/forum/feed"></head><body>Students report difficulty coordinating visa documents, affordable accommodation and application deadlines.<a href="/articles/unrelated-university-checklist">Related article</a></body></html>', 'text/html')
+    db,e,cid=engine(tmp_path,web=Website())
+    sid,_=e.add_source(cid,'https://education.example/forum/study-abroad','Student discussion','Customers','Actual student problems',status='approved')
+    result=e.crawl_source(db.one('SELECT * FROM sources WHERE id=?',(sid,)))
+    assert result['records']==1 and not result.get('error')
+    document=db.one('SELECT url,content FROM documents')
+    assert document['url']=='https://education.example/forum/study-abroad'
+    assert 'visa documents' in document['content']
+
+
 def test_historical_articles_are_not_presented_as_this_week_news(tmp_path):
     db,e,cid=engine(tmp_path)
     e.research(cid)

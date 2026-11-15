@@ -1,0 +1,126 @@
+{
+  "status": "passed",
+  "links": [
+    {
+      "path": "start.ps1",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/acceptance_evidence/README.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": ".env.example",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "scripts/live_acceptance.py",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/ACCEPTANCE.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/Signal_Stack_Technical_Guide.pdf",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/TECHNICAL.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "schema.sql",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/MeetUniversity_Monday_Morning_Brief.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/MeetUniversity_Monday_Morning_Brief.html",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/MeetUniversity_Monday_Morning_Brief.pdf",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/Buffer_Monday_Morning_Brief.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/Buffer_Monday_Morning_Brief.html",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/Buffer_Monday_Morning_Brief.pdf",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/Allbirds_Monday_Morning_Brief.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/Allbirds_Monday_Morning_Brief.html",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/sample_reports/Allbirds_Monday_Morning_Brief.pdf",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/COSTS.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/DEMO.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/ASSIGNMENT_AUDIT.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/acceptance_evidence/README.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/ACCEPTANCE.md",
+      "exists": true,
+      "tracked": true
+    },
+    {
+      "path": "docs/PHASES.md",
+      "exists": true,
+      "tracked": true
+    }
+  ],
+  "note": "Repository-relative README links resolve to tracked files/directories. Generated output paths are explicitly labeled local and ignored."
+}

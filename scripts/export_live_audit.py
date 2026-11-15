@@ -1,4 +1,5 @@
 """Save current real-company acceptance evidence and three report formats."""
+import argparse
 import json
 import os
 import sqlite3
@@ -10,6 +11,9 @@ from dotenv import load_dotenv
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--company-id', type=int, help='Export only this company; summary counts still cover all companies.')
+    args = parser.parse_args()
     load_dotenv()
     target = Path('output/assignment-audit')
     reports = target/'reports'
@@ -33,10 +37,11 @@ def main():
             brief = get(root+f'/briefs/{brief_id}')
             snapshot['latest_brief'] = brief
             slug = company['name'].lower().replace(' ', '-')
-            for fmt in ('md', 'html', 'pdf'):
-                response = client.get(root+f'/briefs/{brief_id}/export/{fmt}')
-                response.raise_for_status()
-                (reports/f'{slug}-brief.{fmt}').write_bytes(response.content)
+            if args.company_id is None or args.company_id == cid:
+                for fmt in ('md', 'html', 'pdf'):
+                    response = client.get(root+f'/briefs/{brief_id}/export/{fmt}')
+                    response.raise_for_status()
+                    (reports/f'{slug}-brief.{fmt}').write_bytes(response.content)
             (target/f'company-{cid}-final.json').write_text(json.dumps(snapshot, indent=2, ensure_ascii=False), encoding='utf-8')
             sections = brief['sections']
             if isinstance(sections, str):

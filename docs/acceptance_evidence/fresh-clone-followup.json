@@ -1,0 +1,41 @@
+{
+  "base_clone_commit": "cde2a79c54ca6d6f56cfb9f4a1a8a282bc1a9f8b",
+  "note": "Final source-scope, customer-analysis, startup, README, export, and pytest-discovery changes copied into the isolated clean clone before follow-up tests.",
+  "patch_files": [
+    {
+      "path": "app/services.py",
+      "sha256": "765bd26b8c28479652a07c5360fbca769484e6d5f7d1ba5fb7ba85111601d015"
+    },
+    {
+      "path": "tests/test_assignment.py",
+      "sha256": "ca597bb7e69f540a05fd6ff3412e5beaabe5453321fd5f2da36cc0d517a17723"
+    },
+    {
+      "path": "README.md",
+      "sha256": "586b90d4bccd7768b5b5d88e1f709e98d73b19b24e56d82229a45e72a455ced3"
+    },
+    {
+      "path": "start.ps1",
+      "sha256": "26140e95b0520143d212a8c5ebf593721ca3837e97329725dc0d850ffc0ad0d5"
+    },
+    {
+      "path": "scripts/export_live_audit.py",
+      "sha256": "e17de51175e8e59e0b2d61fb31208b6ba0b2b1c31daedd3ad0c6c5801c13f636"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "32e9b8dd30b2c70d574ad7d0494cf2a1517e18ea229e6becf7aacf9f94698bb2"
+    },
+    {
+      "path": "pytest.ini",
+      "sha256": "abe7b6a93633495e0ea449395cbc26ae6be2f98deb6a45ba444924b68b9c69d2"
+    }
+  ],
+  "final_tests": {
+    "status": "passed",
+    "tests": 51,
+    "warnings": 1,
+    "duration_seconds": 47.46,
+    "pip_check": "No broken requirements found"
+  }
+}

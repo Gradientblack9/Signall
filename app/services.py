@@ -268,6 +268,15 @@ class Engine:
                 title, text, soup = html_content(page)
                 feed_link = soup.find('link', attrs={'type': re.compile(r'application/(rss|atom)\+xml')})
                 if feed_link and feed_link.get('href'):
+                    feed_url = urljoin(page.url, feed_link['href'])
+                    selected, advertised = urlsplit(page.url), urlsplit(feed_url)
+                    selected_path = selected.path.rstrip('/')
+                    # A thread/article can advertise the whole site's feed.
+                    # Keep collection within the selected source instead.
+                    if selected_path and (advertised.netloc != selected.netloc or not
+                        (advertised.path.rstrip('/') == selected_path or advertised.path.startswith(selected_path + '/'))):
+                        feed_link = None
+                if feed_link and feed_link.get('href'):
                     try:
                         feed_page = self.fetcher.get(urljoin(page.url, feed_link['href']), self.db.settings(cid)['request_delay'])
                         feed = feedparser.parse(feed_page.text)
@@ -298,15 +307,18 @@ class Engine:
                 # A small, same-site article sample is a bounded HTML fallback,
                 # not an unrestricted site crawl. Every article has its own policy check.
                 articles = []
-                for anchor in soup.find_all('a', href=True):
-                    target = urljoin(page.url, anchor['href'])
-                    path = urlsplit(target).path
-                    if (urlsplit(target).netloc == urlsplit(page.url).netloc
-                        and target != page.url and len(path.strip('/').split('/')) >= 2
-                        and re.search(r'/news/|/blog/|/articles/|/insights/|/20\d\d/\d\d/', path)
-                        and not re.search(r'/tag/|/category/|/author/|/page/', path)
-                        and target not in articles):
-                        articles.append(target)
+                # A customer source often has unrelated recommendations or
+                # navigation. Keep it on the exact reviewed page/thread.
+                if source['category'] != 'Customers':
+                    for anchor in soup.find_all('a', href=True):
+                        target = urljoin(page.url, anchor['href'])
+                        path = urlsplit(target).path
+                        if (urlsplit(target).netloc == urlsplit(page.url).netloc
+                            and target != page.url and len(path.strip('/').split('/')) >= 2
+                            and re.search(r'/news/|/blog/|/articles/|/insights/|/20\d\d/\d\d/', path)
+                            and not re.search(r'/tag/|/category/|/author/|/page/', path)
+                            and target not in articles):
+                            articles.append(target)
                 for target in articles[:3]:
                     try:
                         article = self.fetcher.get(target, self.db.settings(cid)['request_delay'])
@@ -387,7 +399,10 @@ class Engine:
 
     def analyze_document(self, company_id, document, context):
         source = self.db.one('SELECT * FROM sources WHERE id=?', (document['source_id'],)) if document['source_id'] else None
-        result = self.llm.ask('Analyze this one document for this company. Extract the most substantive signal, or classify neutral with low relevance. evidence_quote MUST be an exact contiguous excerpt. A homepage, about page or general service description is background: set is_development=false unless the text actually reports a change, customer problem or new event. Do not invent launches or dates. event_date must be explicitly present, otherwise empty. Differentiate internal objections, lost deals, requests, sales patterns and risks. Explain concrete business implications and an evidence-specific next step; avoid generic advice. suggested_owner is a recommended ROLE, not an asserted employee. competitor_name must be supported by the text and company context. watch_reason explains an early development worth watching, otherwise empty. Interpretation is never independently verified fact.', context | {'document': {k: document[k] for k in ('title', 'url', 'content', 'published_at', 'kind')}, 'source': source}, Interpretation)
+        task = 'Analyze this one document for this company. Extract the most substantive signal, or classify neutral with low relevance. evidence_quote MUST be an exact contiguous excerpt. A homepage, about page or general service description is background: set is_development=false unless the text actually reports a change, customer problem or new event. Do not invent launches or dates. event_date must be explicitly present, otherwise empty. Differentiate internal objections, lost deals, requests, sales patterns and risks. Explain concrete business implications and an evidence-specific next step; avoid generic advice. suggested_owner is a recommended ROLE, not an asserted employee. competitor_name must be supported by the text and company context. watch_reason explains an early development worth watching, otherwise empty. Interpretation is never independently verified fact.'
+        if source and source['category'] == 'Customers':
+            task += ' This is a reviewed CUSTOMER PROBLEM source. Analyze needs, complaints and expectations of the company\'s target or adjacent customers even when its company name is absent. A company mention is not required for customer intelligence. Attribute experiences to the actual programme/provider in the source; never assert that contributors are customers of this company. Match the problem to a specific service in its profile. Adjacent travel/volunteer programmes are weaker evidence than the exact customer segment. When multiple reviews are present, select one relevant substantive review and its associated stated date; do not transfer a date between reviews. Explicitly old complaints or discussions are historical context (is_development=false); they may inform a labeled watch item. Do not treat a provider promotion as actual customer language.'
+        result = self.llm.ask(task, context | {'document': {k: document[k] for k in ('title', 'url', 'content', 'published_at', 'kind')}, 'source': source}, Interpretation)
         if not result.evidence_quote or normalized(result.evidence_quote) not in normalized(document['content']):
             raise ValueError(f"Document {document['id']}: AI quote was not present in evidence; signal rejected")
         factors = self.factors(document, result, source, company_id)

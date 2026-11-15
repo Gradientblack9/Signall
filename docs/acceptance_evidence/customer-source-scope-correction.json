@@ -1,0 +1,12 @@
+{
+  "company_id": 1,
+  "source_id": 91,
+  "excluded_records": 21,
+  "reason": "Excluded 20 unrelated site-wide RSS posts and one unrelated article linked from the selected student thread. The data was backed up before cleanup; original crawl/job logs remain.",
+  "original_crawl_job": 33,
+  "backup_kept_locally": true,
+  "policy": "Customer sources are limited to the exact approved page; related articles and site-wide feeds are not followed. No restricted sources bypassed.",
+  "excluded_related_document_id": 127,
+  "customer_thread_status": "rejected after its page exposed out-of-scope feed/article material",
+  "backup_file": "data/customer-scope-final-before-cleanup.sqlite"
+}

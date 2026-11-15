@@ -1,0 +1,45 @@
+{
+  "synthetic": false,
+  "brief_id": 14,
+  "title": "MeetUniversity - Monday Morning Brief - 15 Nov 2026",
+  "created_at": "2026-11-15T18:26:41.606333+00:00",
+  "sections": {
+    "Executive Summary": 3,
+    "Customer Signals": 0,
+    "Competitor Intelligence": 1,
+    "Market Intelligence": 2,
+    "Internal Business Intelligence": 0,
+    "Opportunities Identified": 3,
+    "Risks & Threats": 3,
+    "Recommended Actions for This Week": 3,
+    "What We Should Watch": 6,
+    "Source Appendix": 36
+  },
+  "signals": 36,
+  "current_week_customer_signals": 0,
+  "approved_sources": 23,
+  "new_customer_sources": [
+    {
+      "id": 90,
+      "name": "GoAbroad participant reviews",
+      "url": "https://www.goabroad.com/reviews",
+      "status": "approved"
+    },
+    {
+      "id": 91,
+      "name": "Mumsnet semester-abroad parent discussion",
+      "url": "https://www.mumsnet.com/talk/higher_education/5524500-semester-abroad-any-tips?page=3",
+      "status": "rejected"
+    },
+    {
+      "id": 92,
+      "name": "SmartCustomer study-abroad consultancy reviews",
+      "url": "https://www.smartcustomer.com/reviews/wslconsultants.com",
+      "status": "approved"
+    }
+  ],
+  "pdf_pages": 20,
+  "pdf_section_text_check": true,
+  "quote_policy": "Source excerpts are traceable text, not independent verification.",
+  "customer_scope_note": "Sources describe other providers/adjacent audiences; they do not establish MeetUniversity customer status."
+}

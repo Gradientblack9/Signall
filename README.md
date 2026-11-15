@@ -7,16 +7,30 @@ The dashboard uses plain text for the Signal Stack name, standard fonts, and sim
 ## Run on Windows
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+git clone https://github.com/Gradientblack9/Signall.git
+cd Signall
+python -X utf8 -m venv .venv
+.\.venv\Scripts\python.exe -X utf8 -m pip install -r requirements.txt
 Copy-Item .env.example .env
 # Edit .env locally: set GEMINI_API_KEY. Never commit this file.
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
+.\.venv\Scripts\python.exe -X utf8 -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-Open **http://127.0.0.1:8000**. On this workspace the environment and Gemini key are already configured. `./start.ps1` starts it again and creates `.env` if absent. The local database contains real public-data runs for MeetUniversity, Buffer and Allbirds. The submission archive starts with an empty database; saved acceptance evidence and three real sample reports are included under `output/assignment-audit/`.
+Run these commands from the cloned repository root. Python 3.11+ and Git are required. The `-X utf8` option supports Windows folder names containing non-ASCII characters. Copy the environment example only during initial setup; retain your existing `.env` on later runs.
 
-macOS/Linux: use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, `cp .env.example .env`, then `.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1`.
+Open **http://127.0.0.1:8000**. A fresh clone starts with an empty database and no API key. The server creates `data/signal.db` on startup. Add your own company and key to run AI operations. For later Windows starts, use [start.ps1](start.ps1) with `.\start.ps1` from the repository root.
+
+Committed sample reports are in [docs/sample_reports](docs/sample_reports/), and published test evidence is in [docs/acceptance_evidence](docs/acceptance_evidence/README.md). The local `output/` directory contains generated exports and full acceptance snapshots; it is ignored by Git and is not included in a fresh clone.
+
+macOS/Linux, from the repository root:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+cp .env.example .env
+# Set GEMINI_API_KEY in .env locally.
+.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
+```
 
 ## The workflow
 
@@ -30,7 +44,7 @@ macOS/Linux: use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r re
 
 ## Configuration
 
-See `.env.example`. Keep keys on the server. Gemini free-tier eligibility and quotas depend on your Google account, region and selected model. This app does not create paid accounts or enable billing. It cannot enforce a provider's account-level billing policy; use a free-tier-only project and monitor your provider quota.
+See [.env.example](.env.example). Keep keys on the server. Gemini free-tier eligibility and quotas depend on your Google account, region and selected model. This app does not create paid accounts or enable billing. It cannot enforce a provider's account-level billing policy; use a free-tier-only project and monitor your provider quota.
 
 `GEMINI_MODEL` is configurable because model availability changes. **Test connection** verifies a real structured response. No key means AI operations report a configuration error; there is no fabricated fallback. For Ollama, set `LLM_PROVIDER=ollama`, `OLLAMA_MODEL`, and `OLLAMA_URL` after installing/pulling your model. No automatic provider failover silently changes where internal data goes.
 
@@ -49,7 +63,7 @@ Tests isolate databases in temporary folders and inject explicitly synthetic web
 .\.venv\Scripts\python.exe scripts/make_fixture_artifacts.py
 ```
 
-This writes three clearly labeled fixture briefs and a context diff to `output/fixtures/`, keeping production data untouched. `scripts/live_acceptance.py` drives the real API for a supplied company; it does not approve sources automatically. See `docs/ACCEPTANCE.md`.
+This generates `output/fixtures/` locally with three clearly labeled synthetic briefs and a context diff, keeping production data untouched. Those files do not exist until the command is run. [scripts/live_acceptance.py](scripts/live_acceptance.py) drives the real API for a supplied company; source approval remains a separate review step. See [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md).
 
 ## Deployment
 
@@ -65,9 +79,9 @@ Docker persists SQLite under `./data` and publishes only on localhost. For remot
 - **Technical Documentation (5-Page PDF)**: [`docs/Signal_Stack_Technical_Guide.pdf`](docs/Signal_Stack_Technical_Guide.pdf) and [`docs/TECHNICAL.md`](docs/TECHNICAL.md)
 - **Database Schema**: [`schema.sql`](schema.sql)
 - **Three Sample Company Reports**:
-  - MeetUniversity (Primary / EdTech): [`docs/sample_reports/MeetUniversity_Monday_Morning_Brief.md`](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.html))
-  - Buffer (SaaS / Social Media): [`docs/sample_reports/Buffer_Monday_Morning_Brief.md`](docs/sample_reports/Buffer_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/Buffer_Monday_Morning_Brief.html))
-  - Allbirds (Direct-to-Consumer / Footwear): [`docs/sample_reports/Allbirds_Monday_Morning_Brief.md`](docs/sample_reports/Allbirds_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/Allbirds_Monday_Morning_Brief.html))
+  - MeetUniversity (Primary / EdTech): [Markdown](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.md), [HTML](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.html), [PDF](docs/sample_reports/MeetUniversity_Monday_Morning_Brief.pdf)
+  - Buffer (SaaS / Social Media): [Markdown](docs/sample_reports/Buffer_Monday_Morning_Brief.md), [HTML](docs/sample_reports/Buffer_Monday_Morning_Brief.html), [PDF](docs/sample_reports/Buffer_Monday_Morning_Brief.pdf)
+  - Allbirds (Direct-to-Consumer / Footwear): [Markdown](docs/sample_reports/Allbirds_Monday_Morning_Brief.md), [HTML](docs/sample_reports/Allbirds_Monday_Morning_Brief.html), [PDF](docs/sample_reports/Allbirds_Monday_Morning_Brief.pdf)
 - **Cost Statement**: [`docs/COSTS.md`](docs/COSTS.md) (100% free / open-source tier disclosure)
 - **Screen-Recorded Demo Guide**: [`docs/DEMO.md`](docs/DEMO.md)
 - **Test Evidence & Acceptance**: [`docs/ASSIGNMENT_AUDIT.md`](docs/ASSIGNMENT_AUDIT.md), [`docs/acceptance_evidence/README.md`](docs/acceptance_evidence/README.md), [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) and [`docs/PHASES.md`](docs/PHASES.md)

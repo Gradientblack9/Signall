@@ -1,0 +1,31 @@
+{
+  "tested_commit": "cde2a79c54ca6d6f56cfb9f4a1a8a282bc1a9f8b",
+  "python": "3.13.7",
+  "isolated_environment": true,
+  "system_site_packages": false,
+  "env_example_only": true,
+  "initial_smoke_database_absent": true,
+  "checks": {
+    "fresh_company_list_empty": true,
+    "/": 200,
+    "/docs": 200,
+    "/openapi.json": 200,
+    "/static/style.css?v=3": 200,
+    "/static/app.js?v=3": 200,
+    "company_creation": 201,
+    "registered_schedule_count": 4,
+    "missing_key_test_status": 503
+  },
+  "health": {
+    "status": "ok",
+    "database": "sqlite",
+    "llm": {
+      "provider": "gemini",
+      "configured": false,
+      "model": "gemini-3.5-flash-lite",
+      "note": "Add GEMINI_API_KEY to .env and restart."
+    },
+    "scheduler": true
+  },
+  "status": "passed"
+}

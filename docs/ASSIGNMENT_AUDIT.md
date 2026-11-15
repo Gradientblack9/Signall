@@ -8,13 +8,13 @@ Checked 14-15 November 2026 against the user's seven-page `EDXSO_AI_Engineer_Int
 
 | Company / industry | Questions | Public answers / skips | Approved sources | Competitors | Records | Distinct URLs | Signals | Sections / opportunities |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| MeetUniversity / education consulting | 10 unique | 2 / 8 | 21 | 8 | 34 | 25 | 34 | 10 / 3 |
+| MeetUniversity / education consulting | 10 unique | 2 / 8 | 23 | 8 | 37 | 28 | 36 | 10 / 3 |
 | Buffer / social media software | 10 unique | 3 / 7 | 13 | 5 | 31 | 31 | 30 | 10 / 3 |
 | Allbirds / footwear and apparel | 10 unique | 4 / 6 | 16 | 5 | 58 | 58 | 58 | 10 / 3 |
 
-Total: **123 actual collected records, 114 distinct URLs within the company contexts**. Nine MeetUniversity records are retained changes at existing URLs. Background pages count as collected records but are excluded from current headlines. Counts come from `output/assignment-audit/final-summary.json`, not fixtures.
+Total: **126 actual collected records, 117 distinct URLs within the company contexts**. Nine MeetUniversity records are retained changes at existing URLs. Background pages count as collected records but are excluded from current headlines. Counts come from the live database, not fixtures.
 
-Only public website information was used; confidential questions were skipped as the user requested. There was no actual founder interview or private CRM input. Evaluation answers say this explicitly. All 122 accepted signal excerpts match saved source text and carry URLs. Matching a quote does not independently verify its assertion.
+Only public website information was used; confidential questions were skipped as the user requested. There was no actual founder interview or private CRM input. Evaluation answers say this explicitly. All 124 accepted signal excerpts match saved source text and carry URLs. Matching a quote does not independently verify its assertion.
 
 ## Requirement comparison
 
@@ -25,7 +25,7 @@ Only public website information was used; confidential questions were skipped as
 | Four intelligence categories | PASS | Customers, Competitors, Market, Internal supported with reasons and scores. Current categories may be empty. |
 | 5-10 competitors | PASS | 8/5/5 retrieved competitor candidates. Country aliases deduplicated. |
 | 20 approved MeetUniversity sources | PASS | 21 reviewed approvals; six additional candidates remain unapproved. |
-| Customer problems and actual language | PARTIAL | Public review/problem sources collected; historical complaints excluded from current headlines. MeetUniversity/Allbirds have no current Customer development. Buffer first-party program information is weaker than independent discussion. |
+| Customer problems and actual language | PARTIAL | Two public customer review sources were accepted for MeetUniversity, including adjacent-program feedback and older consultancy reviews. The student forum source was rejected after its site-wide feed and a related article produced out-of-scope records; 21 such records were excluded with original logs and a local SQLite backup retained. Neither accepted review establishes a MeetUniversity customer relationship, and no new customer development is claimed in brief 14. |
 | Market/regulatory sources | PASS / access limited | Education policies/testing, social APIs, apparel/sustainability/advertising sources differ by company. Retrieval restrictions recorded. |
 | Approval, reasons and source quality | PASS | Specificity/recency/credibility/relevance estimates and reasons saved; monitoring requires approval. |
 | Source add/remove, duplicates/history | PASS | Real API CRUD test and crawl history. Temporary entry removed, original evidence preserved. |
@@ -58,7 +58,7 @@ Only public website information was used; confidential questions were skipped as
 
 ## Audit corrections
 
-The brief now has exact required sections, opportunity impact/priority/next step, owner roles, watch list and source metadata. Feed filters cover every required dimension. Quotes are labeled source-reported. Background and explicitly historical content are excluded from current headlines; written dates are parsed without guessing missing years. Compact PDF layout retains evidence and confidence metadata without repeating every field on separate lines.
+The brief now has exact required sections, opportunity impact/priority/next step, owner roles, watch list and source metadata. Feed filters cover every required dimension. Quotes are labeled source-reported. Background and explicitly historical content are excluded from current headlines; written dates are parsed without guessing missing years. Compact PDF layout retains evidence and confidence metadata without repeating every field on separate lines. MeetUniversity brief 14 was regenerated after the customer-source review; its current-week Customer Signals section stays empty because the reviews concern other providers and older discussions.
 
 Discovery uses retrieved URL hypotheses when public search is blocked. Canonical-host robots redirects and blocked RSS fallback were corrected. Competitor aliases are deduplicated; retrieved competitor sources can supply omitted profiles. Repeated questions are rejected. Context changes attempt discovery. Monthly reports survive LLM failure. Live model starts are spaced to reduce quota pressure.
 
