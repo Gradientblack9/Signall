@@ -52,6 +52,8 @@ def brief_pdf(brief):
     styles['Heading2'].keepWithNext = True
     styles.add(ParagraphStyle(name='Evidence', parent=styles['BodyText'], leftIndent=14,
         textColor=colors.HexColor('#486258'), spaceAfter=10, leading=14))
+    styles.add(ParagraphStyle(name='Metadata', parent=styles['BodyText'], fontSize=8.5,
+        leading=10.5, textColor=colors.HexColor('#444444'), spaceAfter=5))
     doc = SimpleDocTemplate(buffer, pagesize=(8.27*inch,11.69*inch), rightMargin=48, leftMargin=48, topMargin=48, bottomMargin=48)
     def esc(text):
         return html.escape(str(text)).replace('\n', '<br/>')
@@ -59,17 +61,27 @@ def brief_pdf(brief):
         Paragraph(esc(brief['title']), styles['Title']),
         Paragraph(esc(f"Generated {brief['created_at']} / context {brief['context_version']}"), styles['BodyText']), Spacer(1, 18)]
     for section in json.loads(brief['sections']):
-        story += [CondPageBreak(180), Paragraph(esc(section['title']), styles['Heading2'])]
+        preamble = [Paragraph(esc(section['title']), styles['Heading2'])]
         if section.get('note'):
-            story += [Paragraph(esc(section['note']), styles['BodyText']), Spacer(1, 10)]
-        for item in section['items']:
+            preamble += [Paragraph(esc(section['note']), styles['BodyText']), Spacer(1, 10)]
+        if not section['items']:
+            story += [KeepTogether(preamble), Spacer(1, 10)]
+        for index, item in enumerate(section['items']):
             label = 'Original source:' if item.get('kind') == 'source_appendix' else 'AI interpretation:'
             paragraphs = [Paragraph('<b>' + label + '</b> ' + esc(item['text']), styles['BodyText']),
                 Paragraph('<b>Evidence:</b> ' + esc(item['evidence']), styles['Evidence']),
-                Paragraph('<link href="' + html.escape(item['url'], quote=True) + '">Source: ' + esc(item['url']) + '</link>', styles['Evidence']),
-                Paragraph('<b>Why it matters (AI):</b> ' + esc(item['why']), styles['BodyText'])]
-            paragraphs += [Paragraph('<b>' + esc(name) + ':</b> ' + esc(value), styles['Evidence']) for name, value in item_details(item)]
-            story += [KeepTogether(paragraphs), Spacer(1, 15)]
+                Paragraph('<link href="' + html.escape(item['url'], quote=True) + '">Direct source: ' + esc(item['url']) + '</link>', styles['Metadata'])]
+            if item.get('kind') != 'source_appendix':
+                paragraphs += [Paragraph('<b>Why it matters / impact (AI):</b> ' + esc(item['why']), styles['BodyText']),
+                    Paragraph('<b>Next step (AI):</b> ' + esc(item.get('next_step', '')), styles['BodyText']),
+                    Paragraph(esc(f"Impact {item.get('impact', 'Unknown')}/100 | Priority {item.get('priority', 'Unknown')} | Urgency {item.get('urgency', 'Unknown')} | Suggested owner: {item.get('suggested_owner', 'Unassigned')}"), styles['Metadata'])]
+            paragraphs += [Paragraph(esc('Original source: ' + item.get('original_source', item['url'])), styles['Metadata']),
+                Paragraph(esc(f"Published: {item.get('published_at') or 'Unknown'} | Discovered: {item.get('discovered_at') or 'Unknown'}"), styles['Metadata']),
+                Paragraph(esc(item.get('freshness', 'Date not established')), styles['Metadata']),
+                Paragraph(esc('Verification: ' + item.get('verification', 'Not independently corroborated')), styles['Metadata'])]
+            if 'evidence_strength' in item:
+                paragraphs.append(Paragraph(esc(f"Evidence strength (AI; not proof): {item['evidence_strength']:.0%}"), styles['Metadata']))
+            story += [KeepTogether((preamble if index == 0 else []) + paragraphs), Spacer(1, 12)]
     def footer(canvas, document):
         canvas.saveState()
         canvas.setFont('Helvetica', 9)

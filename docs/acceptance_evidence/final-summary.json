@@ -1,0 +1,91 @@
+{
+  "synthetic": false,
+  "generated_at": "2026-11-15T17:26:59.645403+00:00",
+  "companies": [
+    {
+      "id": 1,
+      "name": "MeetUniversity",
+      "industry": "Education Consulting and Study Abroad Services",
+      "questions": 10,
+      "unique_questions": 10,
+      "answered_from_public_information": 2,
+      "skipped": 8,
+      "approved_sources": 21,
+      "sources": 27,
+      "competitor_profiles": 8,
+      "collected_records": 34,
+      "unique_record_urls": 25,
+      "changed_content_versions": 9,
+      "signals": 34,
+      "all_signal_quotes_match_saved_documents": true,
+      "all_signals_have_links": true,
+      "brief_history": 6,
+      "latest_brief_id": 11,
+      "sections": 10,
+      "executive_items": 3,
+      "opportunities": 3,
+      "sections_with_no_current_development": [
+        "Customer Signals",
+        "Internal Business Intelligence"
+      ],
+      "report_path": "reports/meetuniversity-brief.pdf"
+    },
+    {
+      "id": 2,
+      "name": "Buffer",
+      "industry": "Social Media Management Software",
+      "questions": 10,
+      "unique_questions": 10,
+      "answered_from_public_information": 3,
+      "skipped": 7,
+      "approved_sources": 13,
+      "sources": 35,
+      "competitor_profiles": 5,
+      "collected_records": 31,
+      "unique_record_urls": 31,
+      "changed_content_versions": 0,
+      "signals": 30,
+      "all_signal_quotes_match_saved_documents": true,
+      "all_signals_have_links": true,
+      "brief_history": 3,
+      "latest_brief_id": 8,
+      "sections": 10,
+      "executive_items": 5,
+      "opportunities": 3,
+      "sections_with_no_current_development": [
+        "Market Intelligence"
+      ],
+      "report_path": "reports/buffer-brief.pdf"
+    },
+    {
+      "id": 3,
+      "name": "Allbirds",
+      "industry": "Footwear and Apparel",
+      "questions": 10,
+      "unique_questions": 10,
+      "answered_from_public_information": 4,
+      "skipped": 6,
+      "approved_sources": 16,
+      "sources": 27,
+      "competitor_profiles": 5,
+      "collected_records": 58,
+      "unique_record_urls": 58,
+      "changed_content_versions": 0,
+      "signals": 58,
+      "all_signal_quotes_match_saved_documents": true,
+      "all_signals_have_links": true,
+      "brief_history": 2,
+      "latest_brief_id": 10,
+      "sections": 10,
+      "executive_items": 5,
+      "opportunities": 3,
+      "sections_with_no_current_development": [
+        "Customer Signals",
+        "Internal Business Intelligence"
+      ],
+      "report_path": "reports/allbirds-brief.pdf"
+    }
+  ],
+  "total_collected_records": 123,
+  "total_unique_record_urls_within_each_company": 114
+}

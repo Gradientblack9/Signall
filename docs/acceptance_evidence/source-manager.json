@@ -1,0 +1,21 @@
+{
+  "company_id": 2,
+  "synthetic": false,
+  "addition": {
+    "id": 90,
+    "created": true,
+    "duplicate": false
+  },
+  "duplicate": {
+    "id": 90,
+    "created": false,
+    "duplicate": true
+  },
+  "approval": {
+    "saved": true
+  },
+  "removal": {
+    "deleted": true
+  },
+  "restored_source_count": 35
+}

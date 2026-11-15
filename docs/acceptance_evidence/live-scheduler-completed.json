@@ -1,0 +1,536 @@
+{
+  "synthetic": false,
+  "company_id": 1,
+  "basis": "First explicit scheduler acceptance run, registered weekly and audit jobs advanced with DateTrigger; later interrupted rerun retained separately in live-scheduler.json and database logs.",
+  "runs": [
+    {
+      "id": 23,
+      "company_id": 1,
+      "kind": "weekly",
+      "status": "partial",
+      "started_at": "2026-11-14T14:28:03.785772+00:00",
+      "finished_at": "2026-11-14T14:29:51.839214+00:00",
+      "result": {
+        "crawl": {
+          "records": 3,
+          "sources": [
+            {
+              "source_id": 50,
+              "records": 1,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 48,
+              "records": 0,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 46,
+              "records": 0,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 8,
+              "records": 0,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 5,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 44,
+              "records": 0,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 55,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 57,
+              "records": 1,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 10,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 6,
+              "records": 0,
+              "changed": false,
+              "limitations": [
+                {
+                  "url": "https://thepienews.com/feed/",
+                  "error": "Too many redirects"
+                },
+                {
+                  "url": "https://thepienews.com/2024/02/15/meghna-ramaswamy-university-of-saskatchewan-canada-on-three-lines-11/",
+                  "error": "HTTP 404: public resource unavailable"
+                }
+              ]
+            },
+            {
+              "source_id": 52,
+              "records": 1,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 45,
+              "records": 0,
+              "changed": true,
+              "limitations": []
+            },
+            {
+              "source_id": 53,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 54,
+              "records": 0,
+              "changed": true,
+              "limitations": [
+                {
+                  "url": "https://www.icef.com/feed/",
+                  "error": "Too many redirects"
+                }
+              ]
+            },
+            {
+              "source_id": 7,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 56,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 47,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 1,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 51,
+              "records": 0,
+              "changed": false,
+              "limitations": []
+            },
+            {
+              "source_id": 9,
+              "records": 0,
+              "changed": true,
+              "limitations": [
+                {
+                  "url": "https://monitor.icef.com/2026/11/how-the-shift-from-volume-to-value-will-reshape-international-student-recruitment/",
+                  "error": "Too many redirects"
+                },
+                {
+                  "url": "https://monitor.icef.com/2026/11/global-survey-tracks-universities-foreign-enrolment-for-2026-and-outlook-for-2027/",
+                  "error": "Too many redirects"
+                },
+                {
+                  "url": "https://monitor.icef.com/2026/11/canada-announces-targets-for-new-international-student-arrivals-through-2029/",
+                  "error": "Too many redirects"
+                }
+              ]
+            },
+            {
+              "source_id": 49,
+              "records": 0,
+              "changed": false,
+              "limitations": [
+                {
+                  "url": "https://www.universityliving.com/blog/student-guide/student-housing-near-university-of-manchester/",
+                  "error": "Too many redirects"
+                },
+                {
+                  "url": "https://www.universityliving.com/blog/global-ambassadors/student-discounts-in-leeds/",
+                  "error": "Too many redirects"
+                },
+                {
+                  "url": "https://www.universityliving.com/blog/accommodation/student-room-in-auburn-2027/",
+                  "error": "Too many redirects"
+                }
+              ]
+            }
+          ],
+          "failures": 0
+        },
+        "analysis": {
+          "analyzed": 4,
+          "failures": []
+        },
+        "brief": {
+          "brief_id": 5,
+          "signals": 28,
+          "developments": 3,
+          "opportunities": 3,
+          "sections": 10,
+          "limitations": []
+        }
+      },
+      "error": null
+    },
+    {
+      "id": 26,
+      "company_id": 1,
+      "kind": "audit",
+      "status": "partial",
+      "started_at": "2026-11-14T14:29:54.193481+00:00",
+      "finished_at": "2026-11-14T14:31:34.946897+00:00",
+      "result": {
+        "report_type": "monthly_source_health",
+        "generated_at": "2026-11-14T14:31:34.946779+00:00",
+        "summary": {
+          "sources_checked": 21,
+          "issues": 2
+        },
+        "issues": [
+          {
+            "source_id": 1,
+            "issue": "declining or stale relevance; review for retirement"
+          },
+          {
+            "source_id": 7,
+            "issue": "possible duplicate domain",
+            "related_id": 53
+          }
+        ],
+        "reassessment": {
+          "sources": [
+            {
+              "source_id": 1,
+              "name": "MeetUniversity website",
+              "before": 0.0,
+              "after": 0.0,
+              "reason": "First-party website source, already utilized for baseline company profile extraction."
+            },
+            {
+              "source_id": 5,
+              "name": "IDP Hotcourses Abroad",
+              "before": 0.8,
+              "after": 0.8,
+              "reason": "Provides course and university listings mapping to MeetUniversity's core selection offerings."
+            },
+            {
+              "source_id": 6,
+              "name": "The PIE News",
+              "before": 0.9,
+              "after": 0.9,
+              "reason": "Covers international education policy changes and visa updates impacting agency recruitment models."
+            },
+            {
+              "source_id": 7,
+              "name": "Times Higher Education Student",
+              "before": 0.85,
+              "after": 0.85,
+              "reason": "Provides global rankings and guidance useful for student university selection."
+            },
+            {
+              "source_id": 8,
+              "name": "GOV.UK Student Visa Overview",
+              "before": 0.8,
+              "after": 0.8,
+              "reason": "Tracks official UK student visa requirements, a key target region for study abroad agencies."
+            },
+            {
+              "source_id": 9,
+              "name": "ICEF Monitor",
+              "before": 0.9,
+              "after": 0.9,
+              "reason": "Delivers agent management data and international recruitment market trends."
+            },
+            {
+              "source_id": 10,
+              "name": "NAFSA: Association of International Educators",
+              "before": 0.85,
+              "after": 0.85,
+              "reason": "Focuses on international student policies and immigration updates relevant to counseling services."
+            },
+            {
+              "source_id": 44,
+              "name": "AECC India",
+              "before": 0.95,
+              "after": 0.95,
+              "reason": "Direct competitor providing overlapping counseling, test prep, and university admissions services."
+            },
+            {
+              "source_id": 45,
+              "name": "KC Overseas Education",
+              "before": 0.9,
+              "after": 0.9,
+              "reason": "Competes in tech-enabled overseas education consulting and student recruitment."
+            },
+            {
+              "source_id": 46,
+              "name": "Leverage Edu",
+              "before": 0.95,
+              "after": 0.95,
+              "reason": "Major competitor offering AI-driven study abroad platforms and application support."
+            },
+            {
+              "source_id": 47,
+              "name": "Yocket",
+              "before": 0.95,
+              "after": 0.95,
+              "reason": "Competes directly in profile building, shortlisting, and test prep."
+            },
+            {
+              "source_id": 48,
+              "name": "Edvoy",
+              "before": 0.9,
+              "after": 0.9,
+              "reason": "All-in-one study abroad platform matching MeetUniversity's product suite."
+            },
+            {
+              "source_id": 49,
+              "name": "University Living",
+              "before": 0.85,
+              "after": 0.85,
+              "reason": "Tracks accommodation needs tied to pre-departure and settling-in support services."
+            },
+            {
+              "source_id": 50,
+              "name": "Amberstudent",
+              "before": 0.8,
+              "after": 0.8,
+              "reason": "Offers international student housing insights relevant to pre-departure support."
+            },
+            {
+              "source_id": 51,
+              "name": "WeMakeScholars",
+              "before": 0.85,
+              "after": 0.85,
+              "reason": "Highlights student financial and scholarship hurdles matching MeetUniversity's financial planning offerings."
+            },
+            {
+              "source_id": 52,
+              "name": "Scholars4DeV",
+              "before": 0.75,
+              "after": 0.75,
+              "reason": "Tracks scholarship availability and enrollment trends."
+            },
+            {
+              "source_id": 53,
+              "name": "Times Higher Education",
+              "before": 0.9,
+              "after": 0.9,
+              "reason": "Provides higher education market intelligence critical for tracking recruitment trends."
+            },
+            {
+              "source_id": 54,
+              "name": "ICEF",
+              "before": 0.9,
+              "after": 0.9,
+              "reason": "Connects student recruitment agencies and institutions globally."
+            },
+            {
+              "source_id": 55,
+              "name": "IELTS",
+              "before": 0.85,
+              "after": 0.85,
+              "reason": "Covers language testing standards required for international student admissions."
+            },
+            {
+              "source_id": 56,
+              "name": "TOEFL",
+              "before": 0.85,
+              "after": 0.85,
+              "reason": "Provides metrics and compliance data for global language testing."
+            },
+            {
+              "source_id": 57,
+              "name": "International Student",
+              "before": 0.8,
+              "after": 0.8,
+              "reason": "Captures student search behavior and visa resource inquiries."
+            }
+          ],
+          "new_queries": [
+            "MeetUniversity study abroad student reviews and success rates",
+            "international student visa policy changes Germany UK 2026",
+            "tech-enabled education consulting market trends Yocket Leverage Edu"
+          ]
+        },
+        "discovery": {
+          "added": 6,
+          "candidates": 7,
+          "competitors": 8,
+          "queries": [
+            "study abroad consulting industry trends and market report",
+            "international student recruitment market size and competitors",
+            "student visa policy changes study abroad 2026",
+            "study abroad student communities and forums",
+            "education consulting competitors AECC India Leverage Edu Yocket",
+            "study abroad agency market evidence and regulatory shifts"
+          ],
+          "method": "model URL hypotheses validated by permitted public HTTP retrieval",
+          "limitations": [
+            {
+              "query": "study abroad consulting industry trends and market report",
+              "error": "Free search returned no usable results or was blocked. Add sources manually or retry later."
+            },
+            {
+              "query": "international student recruitment market size and competitors",
+              "error": "Free search returned no usable results or was blocked. Add sources manually or retry later."
+            },
+            {
+              "query": "student visa policy changes study abroad 2026",
+              "error": "Free search returned no usable results or was blocked. Add sources manually or retry later."
+            },
+            {
+              "query": "study abroad student communities and forums",
+              "error": "Free search returned no usable results or was blocked. Add sources manually or retry later."
+            },
+            {
+              "query": "education consulting competitors AECC India Leverage Edu Yocket",
+              "error": "Free search returned no usable results or was blocked. Add sources manually or retry later."
+            },
+            {
+              "query": "study abroad agency market evidence and regulatory shifts",
+              "error": "Free search returned no usable results or was blocked. Add sources manually or retry later."
+            },
+            {
+              "url": "https://www.meetuniversity.com/contact-us",
+              "error": "HTTP 404: public resource unavailable"
+            },
+            {
+              "url": "https://www.ksgreece.com/",
+              "error": "Could not resolve public host: www.ksgreece.com"
+            },
+            {
+              "url": "https://www.meetuniversity.com/about-us",
+              "error": "HTTP 404: public resource unavailable"
+            },
+            {
+              "url": "https://www.SI-UK.com/",
+              "error": "robots.txt could not be checked; crawl deferred"
+            },
+            {
+              "url": "https://www.igotostudyabroad.com/",
+              "error": "Could not resolve public host: www.igotostudyabroad.com"
+            },
+            {
+              "url": "https://www.Imperial-Overseas.com/",
+              "error": "Too little public evidence to assess this candidate"
+            },
+            {
+              "url": "https://www.quora.com/topic/Study-Abroad",
+              "error": "Disallowed by robots.txt"
+            },
+            {
+              "url": "https://www.reddit.com/r/studyabroad/",
+              "error": "Disallowed by robots.txt"
+            },
+            {
+              "url": "https://www.trustpilot.com/review/meetuniversity.com",
+              "error": "Disallowed by robots.txt"
+            },
+            {
+              "url": "https://www.upgradabroad.com/",
+              "error": "Too many redirects"
+            },
+            {
+              "url": "https://www.justdial.com/",
+              "error": "Access restricted; authentication and paywalls are not bypassed"
+            },
+            {
+              "url": "https://www.erudera.com/",
+              "error": "robots.txt unavailable or restricted; crawl deferred"
+            },
+            {
+              "url": "https://www.idp.com/india/",
+              "error": "Too many redirects"
+            },
+            {
+              "url": "https://www.educations.com/",
+              "error": "robots.txt unavailable or restricted; crawl deferred"
+            },
+            {
+              "url": "https://www.studyinternational.com/",
+              "error": "Access restricted; authentication and paywalls are not bypassed"
+            },
+            {
+              "url": "https://www.mastersportal.com/",
+              "error": "Access restricted; authentication and paywalls are not bypassed"
+            },
+            {
+              "url": "https://www.bachelorsportal.com/",
+              "error": "Access restricted; authentication and paywalls are not bypassed"
+            },
+            {
+              "url": "https://immi.homeaffairs.gov.au/",
+              "error": "robots.txt unavailable or restricted; crawl deferred"
+            },
+            {
+              "url": "https://study-uk.britishcouncil.org/",
+              "error": "robots.txt unavailable or restricted; crawl deferred"
+            },
+            {
+              "url": "https://www.immigration-quebec.gouv.qc.ca/en/index.html",
+              "error": "Too little public evidence to assess this candidate"
+            },
+            {
+              "url": "https://educationusa.state.gov/",
+              "error": "robots.txt unavailable or restricted; crawl deferred"
+            },
+            {
+              "url": "https://www.nacacnet.org/",
+              "error": "Access restricted; authentication and paywalls are not bypassed"
+            },
+            {
+              "url": "https://www.aice.org/",
+              "error": "robots.txt could not be checked; crawl deferred"
+            },
+            {
+              "url": "https://www.iie.org/",
+              "error": "robots.txt unavailable or restricted; crawl deferred"
+            },
+            {
+              "url": "https://www.daad.de/en/",
+              "error": "Too many redirects"
+            },
+            {
+              "url": "https://www.qs.com/",
+              "error": "Access restricted; authentication and paywalls are not bypassed"
+            }
+          ],
+          "note": "Discovered sources require approval before monitoring."
+        },
+        "removal_candidates": [
+          1,
+          7
+        ],
+        "recommendations": "Review possible duplicates, replace dead sources, and approve relevant new candidates. No source was automatically rejected."
+      },
+      "error": null
+    }
+  ]
+}

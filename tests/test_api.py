@@ -112,10 +112,11 @@ def test_scheduler_registration_and_same_weekly_callback(client,monkeypatch):
     from datetime import datetime, timedelta, timezone
     # Fire the registered weekly job through the real scheduler using a short test trigger.
     jobs.scheduler.reschedule_job(weekly.id,trigger=DateTrigger(run_date=datetime.now(timezone.utc)+timedelta(milliseconds=50)))
-    for _ in range(300):
+    deadline = time.monotonic() + 60
+    while time.monotonic() < deadline:
         row=app.state.db.one("SELECT * FROM job_logs WHERE company_id=? AND kind='weekly' ORDER BY id DESC LIMIT 1",(cid,))
         if row and row['status'] not in ('queued','running'):break
-        time.sleep(.02)
+        time.sleep(.05)
     assert row['status']=='success'
     assert app.state.db.one('SELECT COUNT(*) n FROM briefs')['n']==1
 

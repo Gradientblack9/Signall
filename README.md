@@ -14,7 +14,7 @@ Copy-Item .env.example .env
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-Open **http://127.0.0.1:8000**. On this workspace the environment is already installed. `./start.ps1` starts it again and creates `.env` if absent. The current local preview has a MeetUniversity company entry, one approved first-party source, one successfully crawled real record, and no fabricated intelligence.
+Open **http://127.0.0.1:8000**. On this workspace the environment and Gemini key are already configured. `./start.ps1` starts it again and creates `.env` if absent. The local database contains real public-data runs for MeetUniversity, Buffer and Allbirds. The submission archive starts with an empty database; saved acceptance evidence and three real sample reports are included under `output/assignment-audit/`.
 
 macOS/Linux: use `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.txt`, `cp .env.example .env`, then `.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1`.
 
@@ -57,7 +57,7 @@ This writes three clearly labeled fixture briefs and a context diff to `output/f
 docker compose up --build -d
 ```
 
-Docker persists SQLite under `./data` and publishes only on localhost. For remote deployment, use a persistent disk, HTTPS reverse proxy, `SIGNAL_ACCESS_TOKEN`, and **one** Uvicorn worker/replica. The scheduler is in-process; free hosting that sleeps cannot guarantee Monday delivery. No remote deployment or GitHub push has been performed without an account/target. Docker configuration is provided; image execution requires Docker on the host.
+Docker persists SQLite under `./data` and publishes only on localhost. For remote deployment, use a persistent disk, HTTPS reverse proxy, `SIGNAL_ACCESS_TOKEN`, and **one** Uvicorn worker/replica. The scheduler is in-process; free hosting that sleeps cannot guarantee Monday delivery. The included Vercel adapter disables scheduling and uses temporary storage, so it does not demonstrate the complete persistent monitoring workflow. Docker configuration is provided; image execution requires Docker on the host.
 
 ## Deliverables & Documentation Links
 
@@ -70,7 +70,9 @@ Docker persists SQLite under `./data` and publishes only on localhost. For remot
   - Allbirds (Direct-to-Consumer / Footwear): [`docs/sample_reports/Allbirds_Monday_Morning_Brief.md`](docs/sample_reports/Allbirds_Monday_Morning_Brief.md) ([HTML version](docs/sample_reports/Allbirds_Monday_Morning_Brief.html))
 - **Cost Statement**: [`docs/COSTS.md`](docs/COSTS.md) (100% free / open-source tier disclosure)
 - **Screen-Recorded Demo Guide**: [`docs/DEMO.md`](docs/DEMO.md)
-- **Test Evidence & Acceptance**: [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) and [`docs/PHASES.md`](docs/PHASES.md)
+- **Test Evidence & Acceptance**: [`docs/ASSIGNMENT_AUDIT.md`](docs/ASSIGNMENT_AUDIT.md), [`docs/acceptance_evidence/README.md`](docs/acceptance_evidence/README.md), [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) and [`docs/PHASES.md`](docs/PHASES.md)
+
+The published sample-report folder contains Markdown, HTML and PDF versions of all three real public-data reports. Acceptance completed with 50 tests passing, plus two final export regressions. The genuine 5-10 minute demo recording is still pending. `.env`, runtime databases and virtual environments are excluded from Git.
 
 ## Reading order
 
@@ -82,4 +84,4 @@ Docker persists SQLite under `./data` and publishes only on localhost. For remot
 - `docs/DEMO.md`: demo walkthrough and recording guidance.
 
 
-The PRD does not name its ten brief sections or score weights. The chosen defaults are explicit in `app/services.py` and the technical guide. The requirement for at least three opportunities is an evidence threshold: if fewer exist, the brief states the shortfall.
+The final EDXSO assignment specifies the ten report sections; `app/briefs.py` implements that exact structure. Ranking weights are explicit in `app/services.py`. Unsupported opportunity or headline counts remain visible shortfalls. See `docs/ASSIGNMENT_AUDIT.md` for the actual requirements comparison and remaining submission gaps.

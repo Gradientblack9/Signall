@@ -1,0 +1,12 @@
+{
+  "observed": [
+    "Allbirds brief contains all ten required headings",
+    "Buffer brief history includes previous context",
+    "MeetUniversity competitor plus impact filter returned one relevant signal",
+    "Reviewed-as-verified filter returned zero; source-matched claims were not presented as independently verified",
+    "Automation showed weekly and independent monthly schedules, partial results and failure/collision history",
+    "Company switching worked",
+    "Plain Signal Stack name without logo"
+  ],
+  "console_errors": []
+}

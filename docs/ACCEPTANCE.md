@@ -1,29 +1,35 @@
-# Acceptance and test evidence
+# Acceptance evidence
 
-## Automated local verification
+The final EDXSO assignment was checked on 14-15 November 2026. See [ASSIGNMENT_AUDIT.md](ASSIGNMENT_AUDIT.md) for the requirement matrix and remaining deliverables. Selected publishable evidence is included in [acceptance_evidence/](acceptance_evidence/README.md); full local run snapshots remain under ignored `output/assignment-audit/`.
 
-Run `python -m pytest -q` inside the project environment. Tests use explicitly synthetic `.example` domains and injected responses. Production imports do not reference `tests/fixtures.py`.
+## Completed verification
 
-The three fixture contexts represent study-abroad services, clinic operations and freight logistics. Each discovers 24 distinct test sources and seven test competitor candidates. Approved fixture RSS feeds supply more than 30 records; the tests verify distinct briefs and a changed-priority relevance/score diff. **These are controlled test fixtures, not real MeetUniversity research or live PRD success metrics.**
+- Full isolated regression suite: 50 passed. One upstream Starlette/httpx deprecation warning remains. Results: `output/assignment-audit/final-tests.txt`.
+- Real Gemini research, ten unique adaptive questions per company, discovery, reviewed approvals, public crawling, analysis and briefs: MeetUniversity, Buffer and Allbirds.
+- 123 stored public records across 114 distinct URLs within the company contexts; changed content is retained as separate versions. Background records are included in collection counts and excluded from current brief headlines.
+- MeetUniversity: 21 approved sources, eight discovered competitors, 34 records. Buffer: 13 approved sources, five competitors, 31 records. Allbirds: 16 approved sources, five competitors, 58 records.
+- Every accepted signal has a matching excerpt in its saved document and an evidence URL. This proves traceability, not independent factual corroboration.
+- Three briefs with the exact ten sections and three grounded opportunities each. MeetUniversity has three executive items rather than five, with the limitation stated. Empty current categories are explicit.
+- Buffer context changes retained a profile diff and previous brief, changed source relevance and ranking, and added seven candidates. The new priority is labeled an evaluation setting.
+- Explicit real scheduler run fired registered weekly and monthly jobs using short date triggers. A weekly brief and independent source-health report were saved. Restricted URLs produced partial statuses. Evidence: `live-scheduler-completed.json`.
+- Source addition, duplicate detection, approval and removal passed through the real API using a temporary public article entry. Original sources/evidence retained. Evidence: `source-manager.json`.
+- CSV, XLSX, text PDF and text ingestion, actions, isolation, retries, quote rejection, hash deduplication, history, monthly independence and failure logs are exercised by isolated fixture tests.
 
-The API integration tests traverse company creation, research jobs, interview answers/follow-ups, source discovery and approval, crawling, intake, analysis, brief generation/export, actions, schedules, failures, auth, and settings. The scheduler test fires the actual registered weekly job through APScheduler with a short date trigger; it does not wait a week or prove production uptime. The final full suite passed 35 tests. Two adjusted context/deletion regression tests were subsequently rerun and passed.
+## Reproduce
 
-Browser QA confirmed all eight pages, source creation and approval, successful real crawling, and mobile navigation at a 390-pixel viewport without horizontal overflow. No browser console errors were observed. The MeetUniversity homepage yielded one real record in the live local database; this is partial crawler acceptance, not the required 30-record milestone.
+Start as described in README. Keep the Gemini key in `.env` and use **Test connection**. Never put keys in command-line arguments or reports.
 
-See `output/test-results.txt` for the latest run and `output/fixtures/` for inspectable test artifacts when generated. Browser checks cover the local dashboard. Local `/health` returns 200 and reports scheduler/configuration state.
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q
+node --check static/app.js
+.\.venv\Scripts\python.exe scripts/assignment_live_test.py --stage snapshot --company-id 1
+.\.venv\Scripts\python.exe scripts/export_live_audit.py
+```
 
-## Real-company run
+For another company, use `assignment_live_test.py --stage setup --name NAME --url URL`. This helper supplies labeled public answers and skips private questions, as authorized by the user. It is not founder interview attestation. Review sources before `--stage collect --approve-ids ... --analyze`.
 
-1. Create a free-tier Gemini key in your own Google account, store it only in `.env`, restart and use **Test connection**. Choose a currently available free-tier model if your account does not offer the default.
-2. Start with MeetUniversity and `https://www.meetuniversity.com/`. Run research and inspect each fact's quote/URL. The website was located via public search; its claims still require application-level research and review.
-3. Answer the ten interview questions; confirm they adapt to prior answers. Reassess context. Discover sources, inspect relevance and approve at least 20 appropriate sources. Review 5–10 competitor candidates against their official pages. If free search is blocked, record that limitation and add real sources manually; that does not establish the unseen-company automatic discovery criterion.
-4. Crawl and inspect at least 30 real records and original links. Import approved internal test notes if available. Analyze and verify zero accepted signals lack evidence URLs and matching excerpts.
-5. Generate a brief; inspect all ten sections, explicit empty sections and opportunity coverage. If fewer than three opportunities are supported, record the shortfall. Export all three formats.
-6. Repeat for two unrelated real companies. Edit context and reassess; inspect source and signal changes and saved diffs. Preserve earlier briefs as historical versions.
-7. Trigger the weekly pipeline manually, then leave the application running until a scheduled run fires. Confirm both log entries and briefs. Run a monthly audit manually and inspect dead URLs, duplication/inactivity/relevance and new candidates.
+`assignment_scheduler_test.py` is an explicit manual integration script, guarded against execution on import. Run only while MeetUniversity jobs are idle. It advances schedules in a separate evaluation process without changing saved cadence. The first completed run is retained separately from a later interrupted rerun. Production delivery requires an online server.
 
-`scripts/live_acceptance.py` checks the running API and outputs an evidence report. It can create a company and run research/discovery, but approval remains a human review action in the dashboard. Keys are never supplied as command-line arguments. Read its `--help` before use.
+## Remaining submission gates
 
-## Remaining external gates
-
-A live Gemini key, working external search/crawl access, and a continuously running host are needed for live acceptance. Publishing also needs a deployment target and repository account. No GitHub URL, hosted deployment URL, populated live demo, or real-source acceptance result should be claimed until those steps actually complete.
+Local setup is documented and permitted by the assignment. Source is published at https://github.com/Gradientblack9/Signall. A genuine approximately 5-10 minute screen recording remains missing; the existing 48-second screenshot tour does not satisfy that requirement. No private founder answers or internal files were supplied. Source access, publication dates and independent verification remain limited by public evidence.
