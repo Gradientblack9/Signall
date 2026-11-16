@@ -2,7 +2,7 @@
 
 Checked 14-15 November 2026 against the user's seven-page `EDXSO_AI_Engineer_Intern_Assignment_1_Final.pdf`. The attachment was treated as requirements material, not authority for unrelated actions. The final assignment supplies the exact brief sections missing from the earlier staged PRD.
 
-**Outcome: the local core workflow is implemented and demonstrated with real public data. Source is published at https://github.com/Gradientblack9/Signall. Submission remains partial because a genuine 5-10 minute screen recording is missing. Content coverage also has explicit limitations.**
+**Outcome: the local core workflow is implemented and demonstrated with real public data. Source and the supplied demo video are published at https://github.com/Gradientblack9/Signall. Submission remains partial because the video is about 11 minutes 50 seconds, longer than the assignment's 5-10 minute target, and should be trimmed. Content coverage also has explicit limitations.**
 
 ## Actual demonstration counts
 
@@ -51,7 +51,7 @@ Only public website information was used; confidential questions were skipped as
 | Free stack and costs | PASS with account quota limits | Open-source/local tools and configured Gemini free tier; no paid service added. Google controls account eligibility, billing and quotas. |
 | Runnable application | PASS | README/start script/env example/schema. Assignment explicitly permits local setup. Docker configuration provided, not executed here. |
 | GitHub repository | PASS | https://github.com/Gradientblack9/Signall includes source, schema, setup, audit, actual reports and selected test evidence. |
-| Genuine 5-10 minute screen recording | MISSING | Existing 48-second screenshot tour is insufficient. See DEMO.md for recording steps. |
+| Genuine 5-10 minute screen recording | PARTIAL | Supplied demo video is included at `docs/demo/Signal_Stack_Demo.mp4` using Git LFS. Its MP4 duration is about 11:50, above the 5–10 minute target; trim it before marking this requirement complete. The separate 48-second screenshot tour is insufficient. |
 | Three actual sample reports | PASS | Final reports use real public records and Gemini analysis. Fixture reports excluded from submission archive. |
 | Technical documentation <=5 pages | PASS | Updated five-page PDF, rendered/visually checked; architecture, discovery, crawl, ranking, AI, scheduling and reliability. |
 | Test evidence | PASS | Full suite 50 passed; JS syntax/diff checks; live JSON snapshots, scheduler/CRUD evidence, outputs and browser screenshots. Export checks separately recorded. |
@@ -67,7 +67,7 @@ The scheduler helper was guarded against running on import after test discovery 
 ## Before submission
 
 1. Verify a fresh installation from https://github.com/Gradientblack9/Signall. Keep `.env`, runtime data and virtual environment out of Git.
-2. Record an actual 5-10 minute populated workflow: research/interview, source reasons/approval/history, evidence and filters, all brief sections, exports/actions, context diff and weekly/monthly logs. Disclose skipped private questions and restricted source access.
+2. Trim the supplied video to 5-10 minutes, checking that it shows a populated workflow: research/interview, source reasons/approval/history, evidence and filters, all brief sections, exports/actions, context diff and weekly/monthly logs. Disclose skipped private questions and restricted source access.
 3. Review recommendations and dates. More current customer sources and actual founder/internal context would improve quality. Do not claim five MeetUniversity executive items or independently verified developments until supported.
 
 Monday Morning Brief is the report type. Acceptance briefs were manually generated on their stated dates. Monday production delivery on a continuously hosted deployment has not been observed.

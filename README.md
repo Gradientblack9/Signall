@@ -83,7 +83,7 @@ Docker persists SQLite under `./data` and publishes only on localhost. For remot
   - Buffer (SaaS / Social Media): [Markdown](docs/sample_reports/Buffer_Monday_Morning_Brief.md), [HTML](docs/sample_reports/Buffer_Monday_Morning_Brief.html), [PDF](docs/sample_reports/Buffer_Monday_Morning_Brief.pdf)
   - Allbirds (Direct-to-Consumer / Footwear): [Markdown](docs/sample_reports/Allbirds_Monday_Morning_Brief.md), [HTML](docs/sample_reports/Allbirds_Monday_Morning_Brief.html), [PDF](docs/sample_reports/Allbirds_Monday_Morning_Brief.pdf)
 - **Cost Statement**: [`docs/COSTS.md`](docs/COSTS.md) (100% free / open-source tier disclosure)
-- **Screen-Recorded Demo Guide**: [`docs/DEMO.md`](docs/DEMO.md) and the [7–8 minute narration script](docs/VIDEO_SCRIPT.md)
+- **Demo video**: [`docs/demo/Signal_Stack_Demo.mp4`](docs/demo/Signal_Stack_Demo.mp4) (Git LFS); see [`docs/DEMO.md`](docs/DEMO.md) and the [7–8 minute narration script](docs/VIDEO_SCRIPT.md). The supplied video is 11 minutes 50 seconds and should be trimmed to the assignment's 5–10 minute target.
 - **Test Evidence & Acceptance**: [`docs/ASSIGNMENT_AUDIT.md`](docs/ASSIGNMENT_AUDIT.md), [`docs/acceptance_evidence/README.md`](docs/acceptance_evidence/README.md), [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) and [`docs/PHASES.md`](docs/PHASES.md)
 
 The published sample-report folder contains Markdown, HTML and PDF versions of all three real public-data reports. Acceptance completed with 50 tests passing, plus two final export regressions. The genuine 5-10 minute demo recording is still pending. `.env`, runtime databases and virtual environments are excluded from Git.

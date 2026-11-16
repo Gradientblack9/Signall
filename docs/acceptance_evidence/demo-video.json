@@ -1,0 +1,10 @@
+{
+  "file": "docs/demo/Signal_Stack_Demo.mp4",
+  "storage": "Git LFS",
+  "size_bytes": 64895390,
+  "duration_seconds": 710.037,
+  "duration_human": "11:50",
+  "sha256": "09d20140f82691781857010be20fa524709e2d5eb139b398fa53907d7f507d7f",
+  "assignment_target": "5-10 minutes",
+  "duration_check": "over target; trim before marking complete"
+}
